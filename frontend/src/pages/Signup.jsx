@@ -23,7 +23,7 @@ const Signup = ()=>{
         
         try{
             // 1. Send the POST request to our Node.js backend
-            const response = await axios.post('http://localhost:5000/api/auth/signup', formData)
+            const response = await axios.post('https://minddrop-notes-api.onrender.com/api/auth/signup', formData)
 
             // 2. If successful, save the token to the browser taki user login rhe
             localStorage.setItem('token', response.data.token)

@@ -43,7 +43,7 @@ const Dashboard = () => {
 
   const fetchNotes = async (token) => {
     try {
-      const response = await axios.get('http://localhost:5000/api/notes', {
+      const response = await axios.get('https://minddrop-notes-api.onrender.com/api/notes', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotes(response.data);
@@ -61,7 +61,7 @@ const Dashboard = () => {
 
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.post('http://localhost:5000/api/notes', newNote, {
+      const response = await axios.post('https://minddrop-notes-api.onrender.com/api/notes', newNote, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotes([response.data, ...notes]);
@@ -76,7 +76,7 @@ const Dashboard = () => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      const response = await axios.put(`http://localhost:5000/api/notes/${selectedNote._id}`, selectedNote, {
+      const response = await axios.put(`https://minddrop-notes-api.onrender.com/api/notes/${selectedNote._id}`, selectedNote, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotes(notes.map(note => note._id === selectedNote._id ? response.data : note));
@@ -89,7 +89,7 @@ const Dashboard = () => {
   const handleDeleteNote = async (id) => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/notes/${id}`, {
+      await axios.delete(`https://minddrop-notes-api.onrender.com/api/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNotes(notes.filter(note => note._id !== id));
